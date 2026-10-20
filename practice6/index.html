@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device Management</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f5f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    /* 카드 컨테이너 */
+    .card {
+      width: 100%;
+      max-width: 900px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+    }
+
+    /* 카드 헤더 영역 */
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px;
+      border-bottom: 1px solid #f0f0f4;
+    }
+
+    .header-title h1 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e2022;
+      margin-bottom: 4px;
+    }
+
+    .header-title span {
+      font-size: 13px;
+      color: #8c98a4;
+      font-weight: 400;
+    }
+
+    .btn-add {
+      background-color: #3b82f6;
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-add:hover {
+      background-color: #2563eb;
+    }
+
+    /* 테이블 영역 */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    /* 헤더 구분선 및 스타일 */
+    thead th {
+      font-size: 11px;
+      font-weight: 600;
+      color: #8c98a4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 18px 32px;
+      border-bottom: 1px solid #f0f0f4;
+      background-color: #ffffff;
+    }
+
+    /* 행 구분선 (1px 얇은 줄) */
+    tbody tr {
+      border-bottom: 1px solid #f0f0f4;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 20px 32px;
+      font-size: 14px;
+      color: #2d3748;
+      vertical-align: middle;
+    }
+
+    /* 디바이스 이름 셀 (아이콘 + 텍스트) */
+    .device-cell {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 600;
+      color: #1a202c;
+    }
+
+    .icon-box {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    /* 디바이스 별 아이콘 배경색 */
+    .icon-yellow { background-color: #fef08a; }
+    .icon-orange { background-color: #fed7aa; }
+    .icon-lavender { background-color: #e0e7ff; }
+    .icon-blue { background-color: #bae6fd; }
+
+    /* 상태(STATUS) 배지 */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .badge-online {
+      background-color: #e6f7ed;
+      color: #10b981;
+    }
+    .badge-online .badge-dot { background-color: #10b981; }
+
+    .badge-offline {
+      background-color: #fde8e8;
+      color: #ef4444;
+    }
+    .badge-offline .badge-dot { background-color: #ef4444; }
+
+    .badge-standby {
+      background-color: #fef9c3;
+      color: #ca8a04;
+    }
+    .badge-standby .badge-dot { background-color: #ca8a04; }
+
+    /* 배터리 셀 */
+    .battery-cell {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .progress-bar {
+      width: 80px;
+      height: 6px;
+      background-color: #edf2f7;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 3px;
+    }
+
+    .fill-green { background-color: #10b981; }
+    .fill-red { background-color: #ef4444; }
+
+    .battery-text {
+      font-size: 13px;
+      color: #718096;
+      font-weight: 500;
+    }
+
+    /* Plugged In 이탤릭 텍스트 */
+    .plugged-in-text {
+      font-style: italic;
+      color: #a0aec0;
+      font-size: 13px;
+    }
+
+    /* Edit 버튼 */
+    .btn-edit {
+      background-color: transparent;
+      border: 1px solid #e2e8f0;
+      color: #718096;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-edit:hover {
+      background-color: #f7fafc;
+      border-color: #cbd5e0;
+      color: #4a5568;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <!-- 카드 헤더 -->
+  <div class="card-header">
+    <div class="header-title">
+      <h1>Device Management</h1>
+      <span>Total 4 Devices</span>
+    </div>
+    <button class="btn-add">+ Add Device</button>
+  </div>
+
+  <!-- 디바이스 목록 테이블 -->
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <th>DEVICE NAME</th>
+        <th>LOCATION</th>
+        <th>STATUS</th>
+        <th>BATTERY</th>
+        <th>ACTIONS</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- 행 1 -->
+      <tr>
+        <td>
+          <div class="device-cell">
+            <div class="icon-box icon-yellow"></div>
+            Smart Bulb A
+          </div>
+        </td>
+        <td>Living Room</td>
+        <td>
+              <span class="badge badge-online">
+                <span class="badge-dot"></span> Online
+              </span>
+        </td>
+        <td>
+          <div class="battery-cell">
+            <div class="progress-bar">
+              <div class="progress-fill fill-green" style="width: 85%;"></div>
+            </div>
+            <span class="battery-text">85%</span>
+          </div>
+        </td>
+        <td><button class="btn-edit">Edit</button></td>
+      </tr>
+
+      <!-- 행 2 -->
+      <tr>
+        <td>
+          <div class="device-cell">
+            <div class="icon-box icon-orange"></div>
+            Main Thermostat
+          </div>
+        </td>
+        <td>Hallway</td>
+        <td>
+              <span class="badge badge-offline">
+                <span class="badge-dot"></span> Offline
+              </span>
+        </td>
+        <td>
+          <div class="battery-cell">
+            <div class="progress-bar">
+              <div class="progress-fill fill-red" style="width: 15%;"></div>
+            </div>
+            <span class="battery-text">15%</span>
+          </div>
+        </td>
+        <td><button class="btn-edit">Edit</button></td>
+      </tr>
+
+      <!-- 행 3 -->
+      <tr>
+        <td>
+          <div class="device-cell">
+            <div class="icon-box icon-lavender"></div>
+            Coffee Maker Plug
+          </div>
+        </td>
+        <td>Kitchen</td>
+        <td>
+              <span class="badge badge-online">
+                <span class="badge-dot"></span> Online
+              </span>
+        </td>
+        <td>
+          <span class="plugged-in-text">Plugged In</span>
+        </td>
+        <td><button class="btn-edit">Edit</button></td>
+      </tr>
+
+      <!-- 행 4 -->
+      <tr>
+        <td>
+          <div class="device-cell">
+            <div class="icon-box icon-blue"></div>
+            Front Door Camera
+          </div>
+        </td>
+        <td>Porch</td>
+        <td>
+              <span class="badge badge-standby">
+                <span class="badge-dot"></span> Standby
+              </span>
+        </td>
+        <td>
+          <div class="battery-cell">
+            <div class="progress-bar">
+              <div class="progress-fill fill-green" style="width: 60%;"></div>
+            </div>
+            <span class="battery-text">60%</span>
+          </div>
+        </td>
+        <td><button class="btn-edit">Edit</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
