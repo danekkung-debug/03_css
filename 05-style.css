@@ -1,0 +1,215 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0b0c0e;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #ffffff;
+}
+
+/* --- 유틸리티 클래스 (강사님 작성 방식) --- */
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- 메인 컨테이너 --- */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    height: 85dvh;
+    max-height: 560px;
+    background-color: #555555;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+/* 두 섹션 공통 50% 너비 */
+section {
+    width: 50%;
+    padding: 50px;
+}
+
+/* --- [왼쪽] 정보 섹션 --- */
+.info-section {
+    background-color: #555555;
+    justify-content: space-between;
+}
+
+.header {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+}
+
+.nav a {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 13px;
+    margin-left: 16px;
+    font-weight: 600;
+}
+
+.nav a.active, .nav a:hover {
+    color: #ffffff;
+}
+
+.badge {
+    display: inline-block;
+    align-self: flex-start;
+    background-color: #ccff00;
+    color: #000000;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+.product-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    line-height: 0.95;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+}
+
+.product-title .highlight {
+    color: #ccff00;
+}
+
+.subtitle {
+    color: #bbbbbb;
+    font-size: 13px;
+}
+
+.size-section {
+    gap: 10px;
+}
+
+.size-label {
+    color: #cccccc;
+    font-size: 12px;
+}
+
+.size-buttons {
+    gap: 8px;
+}
+
+.size-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: none;
+    background-color: #333333;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.size-btn.active {
+    background-color: #ccff00;
+    color: #000000;
+}
+
+.action-section {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+}
+
+.add-to-bag-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 12px;
+    cursor: pointer;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- [오른쪽] 비주얼 섹션 --- */
+.visual-section {
+    background-color: #333333;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    position: relative;
+    justify-content: flex-end;
+    padding: 40px;
+}
+
+.tilted-card {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 520px;
+    height: 400px;
+    background-color: #e5e5e5;
+    border-radius: 12px;
+    transform: rotate(-14deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.tilted-card img {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+}
+
+.specs {
+    gap: 24px;
+    margin-left: auto;
+    z-index: 2;
+}
+
+.spec-item {
+    align-items: flex-start;
+}
+
+.spec-value {
+    font-family: 'Montserrat', sans-serif;
+    color: #ccff00;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+.spec-label {
+    color: #888888;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}

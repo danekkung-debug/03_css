@@ -1,0 +1,191 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    background-color: #f1f3f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* 공통 카드 스타일 */
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* 1. 상단 디스크 카드 (4개) */
+.disk-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 180px;
+    position: relative;
+}
+
+.disk-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.disk-capacity {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2b3674;
+}
+
+.disk-icon-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+/* 하드디스크 원형 아이콘 */
+.hdd-icon {
+    width: 75px;
+    height: 75px;
+    background-color: #1b2559;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hdd-icon::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.disk-bottom {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dots {
+    color: #718096;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+/* 2. 좌측 하단 스토리지 요약 카드 */
+.summary-card {
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.summary-label {
+    font-size: 11px;
+    color: #4a5568;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.summary-value-used {
+    font-size: 28px;
+    font-weight: 800;
+    color: #2b3674;
+    margin-top: 4px;
+}
+
+.summary-value-available {
+    font-size: 28px;
+    font-weight: 800;
+    color: #3182ce;
+    margin-top: 4px;
+}
+
+/* 3. 버튼 그룹 카드 */
+.button-card {
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 11px;
+    background-color: #f7fafc;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2b3674;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+}
+
+.action-btn:hover {
+    background-color: #edf2f7;
+}
+
+/* 4. 우측 시스템 파일 바 목록 카드들 */
+.system-file-row {
+    grid-column: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 30px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* 우측 행별 색상 및 글자색 매칭 */
+.row-gray {
+    background-color: #e2e8f0;
+    color: #2b3674;
+}
+
+.row-yellow {
+    background-color: #fefcbf;
+    color: #744210;
+}
+
+.row-pink {
+    background-color: #fed7d7;
+    color: #9b2c2c;
+}
+
+.row-white {
+    background-color: #ffffff;
+    color: #2b3674;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* 행 내부 텍스트 스타일 */
+.file-title {
+    display: flex;
+    align-items: center;
+}
+
+.file-size {
+    font-weight: 700;
+}

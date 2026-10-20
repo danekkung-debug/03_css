@@ -1,0 +1,9 @@
+/*
+: hocer (마우스를 올렸을떄 적용받는 css)
+ */
+.btn {
+    border: none;
+}
+/* border : 요소의 경계 */
+border: 2px solid tomato;
+padder

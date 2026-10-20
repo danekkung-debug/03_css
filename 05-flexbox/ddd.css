@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+
+}
+
+
+
+
+
+
+
+.item {
+    margin: 20px;
+    padding: 10px;
+}
+
+.flex {
+    display: flex;
+    /* flex-direction: rlw: -> 가로 방향 주측 */
+}
+
+.colum {
+    flex-direction: column;
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.jc { display: flex; }
+.jc.flex.stat {justify-content: flex-start; }
+.jc.flex.stat {justify-content: conter; }
+.jc.flex.stat {justify-content:space-between; }
+.jc.flex.stat {justify-content:space-around; }
+.jc.flex.stat {justify-content:space-between
+
+a!.jc.flex.stat {justify-content: flex-start; }
+.ai.stretch { align-items: stretch; }
+.ai.stretch.stretch { align-items: flex-start }
+.ai.stretch.stretch { align-items: stretch; align-content: cob\n; }
+
+
+
+.all-conter {
+                   display: flex;}
+}

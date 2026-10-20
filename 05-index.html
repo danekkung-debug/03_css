@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNKRS - AIR MAX PULSE</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- 메인 컨테이너 (flex-row) -->
+<div class="container flex-row">
+
+    <!-- [왼쪽] 정보 영역 -->
+    <section class="info-section flex-col">
+        <header class="header flex-row">
+            <div class="logo">SNKRS.</div>
+            <nav class="nav flex-row">
+                <a href="#">Men</a>
+                <a href="#" class="active">Women</a>
+                <a href="#">Kids</a>
+            </nav>
+        </header>
+
+        <div class="badge">LIMITED EDITION</div>
+
+        <h1 class="product-title">
+            AIR MAX<br>
+            <span class="highlight">PULSE</span>
+        </h1>
+
+        <p class="subtitle">Pushing the limits of what's possible.</p>
+
+        <div class="size-section flex-col">
+            <span class="size-label">Select Size (US)</span>
+            <div class="size-buttons flex-row">
+                <button class="size-btn">7</button>
+                <button class="size-btn">8</button>
+                <button class="size-btn active">9</button>
+                <button class="size-btn">10</button>
+                <button class="size-btn">11</button>
+            </div>
+        </div>
+
+        <div class="action-section flex-row">
+            <div class="price">$ 185.00</div>
+            <button class="add-to-bag-btn flex-row">
+                ADD TO BAG <span>&rarr;</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- [오른쪽] 비주얼 영역 -->
+    <section class="visual-section flex-col">
+        <div class="tilted-card flex-center">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop" alt="Air Max Pulse">
+        </div>
+
+        <div class="specs flex-row">
+            <div class="spec-item flex-col">
+                <span class="spec-value">270도</span>
+                <span class="spec-label">AIR UNIT</span>
+            </div>
+            <div class="spec-item flex-col">
+                <span class="spec-value">12oz</span>
+                <span class="spec-label">LIGHTWEIGHT</span>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,591 @@
+/* =========================
+1. 기본 설정
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background: #8149a4;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #111;
+}
+
+/* =========================
+   2. 전체 검은색 박스
+========================= */
+.portfolio {
+    width: 100%;
+    max-width: 900px;
+    padding: 12px;
+    border-radius: 24px;
+    background: #050505;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    overflow: hidden;
+}
+
+/* =========================
+   3. 왼쪽 영역
+========================= */
+.left-column {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 메인 흰색 카드 */
+.hero-card {
+    min-height: 360px;
+    flex: 1;
+    padding: 28px 26px;
+    background: #fff;
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* 리뷰 */
+.review {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.review-badge {
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #fff500;
+    font-size: 8px;
+}
+
+/* Flex 타이틀 */
+.hero-card h1 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: clamp(44px, 6vw, 68px);
+    font-weight: 800;
+    letter-spacing: -3px;
+}
+
+/* 카드 하단 설명 */
+.hero-description {
+    padding-top: 14px;
+    border-top: 2px solid #888;
+    font-size: 16px;
+    line-height: 1.35;
+}
+
+/* 왼쪽 하단 이미지 */
+.bottom-images {
+    height: 150px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.image-card {
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #242424;
+}
+
+.image-card img,
+.tech-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.image-card:hover img,
+.tech-image:hover img {
+    transform: scale(1.06);
+}
+
+.keyboard-image img {
+    filter: saturate(1.4) contrast(1.08);
+}
+
+.circuit-image img {
+    filter: saturate(0.75) brightness(0.85);
+}
+
+/* =========================
+   4. 오른쪽 영역
+========================= */
+.right-column {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 상단 이미지 + 메뉴 */
+.top-area {
+    display: grid;
+    grid-template-columns: 0.9fr 1.3fr;
+    gap: 10px;
+    height: 160px;
+}
+
+/* 그라데이션 이미지 */
+.gradient-art {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+
+    background:
+            radial-gradient(
+                    ellipse at 15% 15%,
+                    #ffb7b8 0,
+                    transparent 43%
+            ),
+            linear-gradient(
+                    140deg,
+                    #e6a4ed 0%,
+                    #9b2be1 48%,
+                    #2511aa 100%
+            );
+}
+
+.gradient-shape {
+    position: absolute;
+    width: 150%;
+    height: 60%;
+    left: -20%;
+    bottom: -8%;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(23deg);
+
+    background: linear-gradient(
+            110deg,
+            #00d9ec,
+            #0877f9 58%,
+            #6c13e8
+    );
+
+    box-shadow: 0 -8px 22px #e78dff55;
+}
+
+/* 검은색 메뉴 */
+.menu-card {
+    padding: 20px 18px;
+    border-radius: 16px;
+    background: #222020;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.menu-card a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.menu-card a:hover {
+    color: #fff500;
+}
+
+.menu-card .hire-link {
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* =========================
+   5. 콜라보 버튼 + 테크 이미지
+========================= */
+.middle-area {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 10px;
+    height: 70px;
+}
+
+.collab-area {
+    position: relative; /* 하얀색 바가 겹쳐지도록 기준 설정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.collab-button {
+    display: block;
+    width: 100%;
+    padding: 11px 6px;
+    border-radius: 8px;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 8px;
+    font-weight: 800;
+    color: #111;
+    white-space: nowrap;
+}
+
+.collab-button.yellow {
+    background: #ffd12d;
+    transform: rotate(3deg);
+    position: relative;
+    z-index: 1;
+}
+
+.collab-button.white {
+    background: #fff;
+    transform: rotate(4deg);
+    position: relative;
+    margin-top: -12px; /* 위로 끌어올려 노란색 바와 겹치게 함 */
+    z-index: 2;        /* 하얀색 바가 위로 오도록 설정 */
+}
+
+/* 테크 이미지 */
+.tech-image {
+    overflow: hidden;
+    border-radius: 10px;
+    background: #0b3639;
+}
+
+.tech-image img {
+    filter: saturate(1.35) contrast(1.1);
+}
+
+/* MORE CASES */
+.more-cases {
+    margin-top: -1px;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+/* =========================
+   6. 오른쪽 하단 흰색 카드
+========================= */
+.text-card {
+    flex: 1;
+    min-height: 200px;
+    padding: 18px;
+    border-radius: 14px;
+    background: #fff;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.text-card p {
+    max-width: 100%;
+    font-size: 10px;
+    line-height: 1.4;
+    color: #222;
+}
+
+/* =========================
+   7. 태블릿 / 작은 화면
+========================= */
+@media (max-width: 700px) {
+    body {
+        padding: 16px;
+        align-items: center;
+    }
+
+    .portfolio {
+        max-width: 560px;
+        padding: 9px;
+        gap: 8px;
+        border-radius: 18px;
+    }
+
+    .left-column,
+    .right-column {
+        gap: 8px;
+    }
+
+    .hero-card {
+        min-height: 260px;
+        padding: 16px;
+    }
+
+    .hero-card h1 {
+        font-size: clamp(32px, 7vw, 48px);
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 11px;
+        padding-top: 10px;
+    }
+
+    .review {
+        font-size: 8px;
+    }
+
+    .review-badge {
+        font-size: 6px;
+        padding: 4px 6px;
+    }
+
+    .bottom-images {
+        height: 100px;
+        gap: 6px;
+    }
+
+    .top-area {
+        height: 115px;
+        gap: 6px;
+    }
+
+    .menu-card {
+        padding: 12px 9px;
+        gap: 9px;
+    }
+
+    .menu-card a {
+        font-size: 7px;
+    }
+
+    .menu-card .hire-link {
+        font-size: 10px;
+    }
+
+    .middle-area {
+        height: 48px;
+        gap: 6px;
+    }
+
+    .collab-button {
+        padding: 7px 3px;
+        font-size: 5px;
+    }
+
+    .collab-button.white {
+        margin-top: -8px; /* 화면 크기에 맞춰 겹치는 간격 조절 */
+    }
+
+    .text-card {
+        min-height: 145px;
+        padding: 10px;
+    }
+
+    .text-card p {
+        font-size: 7px;
+    }
+
+    .more-cases {
+        font-size: 7px;
+    }
+}
+
+/* =========================
+   8. 모바일
+========================= */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+        align-items: flex-start;
+    }
+
+    .portfolio {
+        max-width: 400px;
+        padding: 8px;
+        gap: 6px;
+        border-radius: 15px;
+    }
+
+    .left-column,
+    .right-column {
+        gap: 6px;
+    }
+
+    .hero-card {
+        min-height: 210px;
+        padding: 11px;
+        border-radius: 9px;
+    }
+
+    .hero-card h1 {
+        font-size: clamp(27px, 8vw, 36px);
+        letter-spacing: -1.5px;
+    }
+
+    .hero-description {
+        font-size: 9px;
+        line-height: 1.3;
+        padding-top: 8px;
+    }
+
+    .review {
+        font-size: 6px;
+        gap: 3px;
+    }
+
+    .review-badge {
+        font-size: 5px;
+        padding: 3px 5px;
+    }
+
+    .bottom-images {
+        height: 78px;
+        gap: 5px;
+    }
+
+    .image-card {
+        border-radius: 7px;
+    }
+
+    .top-area {
+        height: 90px;
+        gap: 5px;
+    }
+
+    .gradient-art,
+    .menu-card {
+        border-radius: 9px;
+    }
+
+    .menu-card {
+        padding: 9px 6px;
+        gap: 7px;
+    }
+
+    .menu-card a {
+        font-size: 5px;
+    }
+
+    .menu-card .hire-link {
+        font-size: 7px;
+    }
+
+    .middle-area {
+        height: 40px;
+        gap: 5px;
+    }
+
+    .collab-area {
+        gap: 3px;
+    }
+
+    .collab-button {
+        padding: 6px 2px;
+        font-size: 4px;
+        border-radius: 5px;
+    }
+
+    .collab-button.white {
+        margin-top: -6px;
+    }
+
+    .tech-image {
+        border-radius: 6px;
+    }
+
+    .more-cases {
+        font-size: 5px;
+    }
+
+    .text-card {
+        min-height: 110px;
+        padding: 8px;
+        border-radius: 9px;
+    }
+
+    .text-card p {
+        font-size: 6px;
+        line-height: 1.3;
+    }
+}
+
+/* =========================
+   9. 아주 작은 화면
+========================= */
+@media (max-width: 340px) {
+    .portfolio {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+    }
+
+    .hero-card {
+        min-height: 230px;
+    }
+
+    .hero-card h1 {
+        font-size: 44px;
+    }
+
+    .hero-description {
+        font-size: 11px;
+    }
+
+    .bottom-images {
+        height: 100px;
+    }
+
+    .top-area {
+        height: 125px;
+    }
+
+    .menu-card {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .menu-card a {
+        font-size: 8px;
+    }
+
+    .menu-card .hire-link {
+        font-size: 11px;
+    }
+
+    .middle-area {
+        height: 60px;
+    }
+
+    .collab-button {
+        font-size: 7px;
+    }
+
+    .collab-button.white {
+        margin-top: -8px;
+    }
+
+    .more-cases {
+        font-size: 8px;
+    }
+
+    .text-card {
+        min-height: 130px;
+    }
+
+    .text-card p {
+        font-size: 8px;
+    }
+}
